@@ -1,16 +1,16 @@
 'use client'
 import { useEffect, useState } from 'react'
-import api from '../services/api' // Importe le service
+import { get } from '../services/api'
 
 const BackendConnection = () => {
-  const [data, setData] = useState<{ message: string } | null>(null) // 👈 Ajout du type
-  const [error, setError] = useState<string | null>(null) // 👈 Correction aussi ici
+  const [data, setData] = useState<Record<string, any> | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get('/data') // Utilisation de l'API centralisée
-        setData(response.data) // Stocke les données dans le state
+        const response = await get<Record<string, any>>('/data')
+        setData(response)
       } catch (err) {
         setError('Erreur lors de la récupération des données.')
       }
@@ -22,8 +22,7 @@ const BackendConnection = () => {
   return (
     <div>
       {error && <p>Erreur: {error}</p>}
-      {data ? <p>{data.message}</p> : <p>Chargement...</p>}{' '}
-      {/* 👈 Utilisation de data.message */}
+      {data ? <p>{data.message}</p> : <p>Chargement...</p>}
     </div>
   )
 }
