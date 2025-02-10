@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+.pnpm-store/
+
+# Build
+.next/
+out/
+dist/
+
+# Logs & cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.vscode/
+.idea/
+.DS_Store
+
+# Environnement
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
