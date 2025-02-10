@@ -1,30 +1,18 @@
 'use client'
-
 import { useEffect, useState } from 'react'
+import api from '../services/api' // Importe le service
 
 const BackendConnection = () => {
-  const [data, setData] = useState(null)
-  const [error, setError] = useState<string | null>(null)
+  const [data, setData] = useState<{ message: string } | null>(null) // 👈 Ajout du type
+  const [error, setError] = useState<string | null>(null) // 👈 Correction aussi ici
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/data', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`)
-        }
-
-        const result = await response.json()
-        setData(result.message) // Mise à jour de l'état avec la réponse JSON
+        const response = await api.get('/data') // Utilisation de l'API centralisée
+        setData(response.data) // Stocke les données dans le state
       } catch (err) {
-        setError('Impossible de récupérer les données.')
-        console.error('Error fetching data:', err)
+        setError('Erreur lors de la récupération des données.')
       }
     }
 
@@ -33,13 +21,9 @@ const BackendConnection = () => {
 
   return (
     <div>
-      {error ? (
-        <p style={{ color: 'red' }}>{error}</p>
-      ) : data ? (
-        <pre>{data}</pre>
-      ) : (
-        <p>Chargement des données...</p>
-      )}
+      {error && <p>Erreur: {error}</p>}
+      {data ? <p>{data.message}</p> : <p>Chargement...</p>}{' '}
+      {/* 👈 Utilisation de data.message */}
     </div>
   )
 }
