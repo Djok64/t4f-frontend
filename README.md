@@ -1,37 +1,46 @@
-🚀 Documentation Complète - Projet T4F Company
-📌 Installation et configuration sous Windows & Linux
+# 🚀 Documentation - Installation et Configuration
 
-Cette documentation explique en détail comment installer et configurer l’environnement de développement du projet T4F Company sous Windows et Linux (Ubuntu).
+Cette documentation explique **en détail** comment installer et configurer l’environnement de développement du projet **T4F Company** sous **Windows** et **Linux (Ubuntu)**.
 
 Elle inclut :
-✅ Installation complète du frontend et backend
-✅ Configuration des outils sous Windows & Linux
-✅ Gestion des variables d’environnement
-✅ Exécution du projet en local
-✅ Commandes utiles & workflow Git
-✅ Bonnes pratiques et dépannage
 
-📌 1. Prérequis : Installer les outils nécessaires
-🔹 1.1 Outils requis
+- ✅ **Installation complète** du frontend et backend
+- ✅ **Configuration des outils sous Windows & Linux**
+- ✅ **Gestion des variables d’environnement**
+- ✅ **Exécution du projet en local**
+- ✅ **Commandes utiles & workflow Git**
+- ✅ **Bonnes pratiques et dépannage**
+
+---
+
+## 📌 1. Prérequis : Installer les outils nécessaires
+
+### 🔹 1.1 Outils requis
+
 Avant de commencer, installez les outils suivants :
 
-Outil Version recommandée Windows Linux (Ubuntu)
-Node.js LTS (18.x ou +) Télécharger ici sudo apt install nodejs npm
-pnpm Dernière version npm install -g pnpm npm install -g pnpm
-Git Dernière version Télécharger ici sudo apt install git
-Docker (optionnel) Dernière version Télécharger ici Guide ici
-PostgreSQL (si utilisé) 14+ Télécharger ici sudo apt install postgresql postgresql-contrib
-VS Code (Recommandé) Dernière version Télécharger ici sudo snap install --classic code
-🔹 1.2 Vérifier les installations
+| Outil                       | Version recommandée | Windows                                                     | Linux (Ubuntu)                                          |
+| --------------------------- | ------------------- | ----------------------------------------------------------- | ------------------------------------------------------- |
+| **Node.js**                 | LTS (18.x ou +)     | [Télécharger](https://nodejs.org/)                          | `sudo apt install nodejs npm`                           |
+| **pnpm**                    | Dernière version    | `npm install -g pnpm`                                       | `npm install -g pnpm`                                   |
+| **Git**                     | Dernière version    | [Télécharger](https://git-scm.com/downloads)                | `sudo apt install git`                                  |
+| **Docker**                  | Dernière version    | [Télécharger](https://www.docker.com/get-started)           | [Guide](https://docs.docker.com/engine/install/ubuntu/) |
+| **PostgreSQL** (si utilisé) | 14+                 | [Télécharger](https://www.postgresql.org/download/windows/) | `sudo apt install postgresql postgresql-contrib`        |
+| **VS Code**                 | Dernière version    | [Télécharger](https://code.visualstudio.com/)               | `sudo snap install --classic code`                      |
+
+---
+
+### 🔹 1.2 Vérifier les installations
+
 Dans le terminal (Windows PowerShell / Git Bash / Terminal Linux), exécutez :
 
-bash
-
-node -v # Vérifie la version de Node.js
-pnpm -v # Vérifie la version de pnpm
-git --version # Vérifie la version de Git
-docker -v # Vérifie la version de Docker
+```bash
+node -v        # Vérifie la version de Node.js
+pnpm -v        # Vérifie la version de pnpm
+git --version  # Vérifie la version de Git
+docker -v      # Vérifie la version de Docker
 psql --version # Vérifie la version de PostgreSQL (si utilisé)
+
 Si une commande échoue, revoyez l’installation de l’outil correspondant.
 
 🏗️ 2. Installation et configuration du projet
@@ -47,6 +56,8 @@ Astuce : Si vous travaillez sur une nouvelle fonctionnalité, créez une branche
 bash
 
 git checkout -b feature-nom-de-la-feature
+
+
 🔹 2.2 Installer les dépendances
 Dans le dossier du projet, exécutez :
 
@@ -193,3 +204,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
