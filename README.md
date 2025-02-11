@@ -7,6 +7,7 @@ Elle inclut :
 - ✅ **Installation complète** du frontend et backend
 - ✅ **Configuration des outils sous Windows & Linux**
 - ✅ **Gestion des variables d’environnement**
+- ✅ **Installation et configuration de MongoDB**
 - ✅ **Exécution du projet en local**
 - ✅ **Commandes utiles & workflow Git**
 - ✅ **Bonnes pratiques et dépannage**
@@ -19,14 +20,14 @@ Elle inclut :
 
 Avant de commencer, installez les outils suivants :
 
-| Outil                       | Version recommandée | Windows                                                     | Linux (Ubuntu)                                          |
-| --------------------------- | ------------------- | ----------------------------------------------------------- | ------------------------------------------------------- |
-| **Node.js**                 | LTS (18.x ou +)     | [Télécharger](https://nodejs.org/)                          | `sudo apt install nodejs npm`                           |
-| **pnpm**                    | Dernière version    | `npm install -g pnpm`                                       | `npm install -g pnpm`                                   |
-| **Git**                     | Dernière version    | [Télécharger](https://git-scm.com/downloads)                | `sudo apt install git`                                  |
-| **Docker**                  | Dernière version    | [Télécharger](https://www.docker.com/get-started)           | [Guide](https://docs.docker.com/engine/install/ubuntu/) |
-| **PostgreSQL** (si utilisé) | 14+                 | [Télécharger](https://www.postgresql.org/download/windows/) | `sudo apt install postgresql postgresql-contrib`        |
-| **VS Code**                 | Dernière version    | [Télécharger](https://code.visualstudio.com/)               | `sudo snap install --classic code`                      |
+| Outil       | Version recommandée | Windows                                                       | Linux (Ubuntu)                                          |
+| ----------- | ------------------- | ------------------------------------------------------------- | ------------------------------------------------------- |
+| **Node.js** | LTS (18.x ou +)     | [Télécharger](https://nodejs.org/)                            | `sudo apt install nodejs npm`                           |
+| **pnpm**    | Dernière version    | `npm install -g pnpm`                                         | `npm install -g pnpm`                                   |
+| **Git**     | Dernière version    | [Télécharger](https://git-scm.com/downloads)                  | `sudo apt install git`                                  |
+| **Docker**  | Dernière version    | [Télécharger](https://www.docker.com/get-started)             | [Guide](https://docs.docker.com/engine/install/ubuntu/) |
+| **MongoDB** | 6.x                 | [Télécharger](https://www.mongodb.com/try/download/community) | `sudo apt install mongodb`                              |
+| **VS Code** | Dernière version    | [Télécharger](https://code.visualstudio.com/)                 | `sudo snap install --classic code`                      |
 
 ---
 
@@ -39,10 +40,8 @@ node -v        # Vérifie la version de Node.js
 pnpm -v        # Vérifie la version de pnpm
 git --version  # Vérifie la version de Git
 docker -v      # Vérifie la version de Docker
-psql --version # Vérifie la version de PostgreSQL (si utilisé)
+mongod --version # Vérifie la version de MongoDB
 ```
-
-Si une commande échoue, revoyez l’installation de l’outil correspondant.
 
 🏗️ 2. Installation et configuration du projet
 🔹 2.1 Cloner le projet
@@ -52,7 +51,6 @@ Ouvrez un terminal et exécutez :
 
 git clone https://github.com/T4FCompany/nom-du-repo.git
 cd nom-du-repo
-
 ```
 
 Astuce : Si vous travaillez sur une nouvelle fonctionnalité, créez une branche :
@@ -60,7 +58,6 @@ Astuce : Si vous travaillez sur une nouvelle fonctionnalité, créez une branche
 ```bash
 
 git checkout -b feature-nom-de-la-feature
-
 ```
 
 🔹 2.2 Installer les dépendances
@@ -69,18 +66,16 @@ Dans le dossier du projet, exécutez :
 ```bash
 
 pnpm install
-
 ```
 
 🚀 Pourquoi pnpm ?
 
 Plus rapide et optimise l’espace disque
 Évite la duplication des dépendances
-
 🔹 2.3 Configuration des variables d’environnement
 Certains services nécessitent un fichier .env.
 
-1️⃣ Copiez le fichier .env.example :
+Copiez le fichier .env.example :
 
 ```bash
 
@@ -88,63 +83,65 @@ cp .env.example .env
 
 ```
 
-2️⃣ Éditez le fichier .env avec les informations nécessaires :
-
-env
+Éditez le fichier .env avec les informations nécessaires :
 
 ```typescript
+
 NEXT_PUBLIC_API_URL=http://localhost:3001
-DATABASE_URL=postgresql://user:password@localhost:5432/database
+MONGO_URI=mongodb://localhost:27017/t4f_database
 JWT_SECRET=super-secret-key
 ```
 
 🚨 Attention : Ne partagez jamais ce fichier sur Git ! Il doit être ajouté au .gitignore.
 
-🔹 2.4 Configuration de PostgreSQL (si utilisé)
+🛠️ 3. Installation et configuration de MongoDB
+🔹 3.1 Utiliser MongoDB avec Docker (recommandé)
+La meilleure façon d'exécuter MongoDB en local est via Docker :
 
-Sous Windows
+```bash
 
-Installez PostgreSQL via le site officiel
-Lancez pgAdmin et créez une nouvelle base de données : database
-Configurez l’utilisateur PostgreSQL et le mot de passe
+docker run -d --name mongo-t4f \
+ -p 27017:27017 \
+ -e MONGO_INITDB_ROOT_USERNAME=admin \
+ -e MONGO_INITDB_ROOT_PASSWORD=secret \
+ mongo:6
+```
 
-Sous Linux (Ubuntu)
+Cela va démarrer MongoDB sur le port 27017.
+Votre URI de connexion sera :
 
-1️⃣ Installation de PostgreSQL
+```perl
+
+mongodb://admin:secret@localhost:27017/
+```
+
+👉 Ajoutez cette URI dans le fichier .env sous MONGO_URI.
+
+🔹 3.2 Installer MongoDB en local (alternative)
+Si vous ne voulez pas utiliser Docker, installez MongoDB manuellement :
+
+Windows
+Téléchargez MongoDB Community Edition
+Installez MongoDB avec les options par défaut.
+Démarrez MongoDB :
+
+```powershell
+
+mongod
+```
+
+Linux (Ubuntu)
 
 ```bash
 
 sudo apt update
-sudo apt install postgresql postgresql-contrib
+sudo apt install mongodb
+sudo systemctl start mongodb
+sudo systemctl enable mongodb
 ```
 
-2️⃣ Créer un utilisateur PostgreSQL
-
-```bash
-
-sudo -u postgres createuser --interactive
-```
-
-3️⃣ Créer une base de données
-
-```bash
-
-sudo -u postgres createdb database
-```
-
-4️⃣ Accéder à PostgreSQL et configurer l’utilisateur
-
-```bash
-
-sudo -u postgres psql
-ALTER USER votre_utilisateur WITH PASSWORD 'votre_mot_de_passe';
-```
-
-🚀 3. Démarrer le projet en local
-
-🔹 3.1 Démarrer le Backend
-
-📌 Si le backend utilise NestJS, lancez :
+🚀 4. Démarrer le projet en local
+🔹 4.1 Démarrer le Backend (NestJS)
 
 ```bash
 
@@ -154,15 +151,9 @@ pnpm start:dev
 
 Le backend sera accessible à http://localhost:3001.
 
-📌 Si Docker est utilisé, démarrez le backend avec :
+Si MongoDB est bien configuré, vous devriez voir une connexion réussie dans la console.
 
-```bash
-
-docker-compose up -d
-```
-
-🔹 3.2 Démarrer le Frontend
-Pour lancer l’application Next.js :
+🔹 4.2 Démarrer le Frontend (Next.js)
 
 ```bash
 
@@ -172,34 +163,29 @@ pnpm dev
 
 L’application sera accessible à http://localhost:3000.
 
-📌 4. Commandes utiles
+📌 5. Commandes utiles
+Action Commande
+Lancer le frontend : pnpm dev
+Lancer le backend : pnpm start:dev
+Lancer MongoDB avec Docker : docker-compose up -d
+Arrêter MongoDB : docker-compose down
+Mettre à jour le projet : git pull origin main
+Créer une nouvelle branche : git checkout -b feature-nom
 
-Action Commande:
+🚀 6. Workflow Git et bonnes pratiques
 
-Lancer le frontend: pnpm dev
-
-Lancer le backend pnpm start:dev
-
-Lancer les services Docker docker-compose up -d
-
-Arrêter Docker docker-compose down
-
-Mettre à jour le projet git pull origin main
-
-Créer une nouvelle branche git checkout -b feature-nom
-
-🚀 5. Workflow Git et bonnes pratiques
-🔹 5.1 Travailler sur une nouvelle fonctionnalité
-
+🔹 6.1 Travailler sur une nouvelle fonctionnalité
 Mettez à jour votre projet :
 
 ```bash
+
 git pull origin main
 ```
 
 Créez une nouvelle branche :
 
 ```bash
+
 git checkout -b feature-nom-de-la-feature
 ```
 
@@ -214,26 +200,22 @@ git push origin feature-nom-de-la-feature
 
 Créez une Pull Request (PR) sur GitHub.
 
-🎯 6. Déploiement et CI/CD
-🔹 6.1 Déploiement automatique
-
-Si le projet est déployé via Vercel, Netlify, ou Railway, il peut être mis à jour avec :
-
-```bash
-
-git push origin main
-```
-
-Si une pipeline CI/CD est en place, le projet sera déployé automatiquement.
-
 📖 7. Ressources utiles
 📌 Documentation des technologies utilisées
 
 Documentation Next.js
 Documentation NestJS
 Guide pnpm
-Gestion des branches Git
-Guide PostgreSQL
+MongoDB Docs
+Mongoose Docs
+🎯 Conclusion
+Cette documentation corrigée et détaillée vous permet d’installer et configurer MongoDB correctement avec NestJS et Next.js, que ce soit sous Windows ou Linux. 🚀
+
+---
+
+✅ **Cette version est totalement optimisée** pour **MongoDB** et GitHub.  
+✅ Elle inclut **Docker** pour MongoDB (recommandé) et une alternative **sans Docker**.  
+✅ Elle est **propre, claire et bien structurée** pour ton équipe.
 
 ---
 
