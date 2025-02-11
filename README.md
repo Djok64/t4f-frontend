@@ -40,6 +40,7 @@ pnpm -v        # Vérifie la version de pnpm
 git --version  # Vérifie la version de Git
 docker -v      # Vérifie la version de Docker
 psql --version # Vérifie la version de PostgreSQL (si utilisé)
+```
 
 Si une commande échoue, revoyez l’installation de l’outil correspondant.
 
@@ -47,128 +48,182 @@ Si une commande échoue, revoyez l’installation de l’outil correspondant.
 🔹 2.1 Cloner le projet
 Ouvrez un terminal et exécutez :
 
-bash
+```bash
 
 git clone https://github.com/T4FCompany/nom-du-repo.git
 cd nom-du-repo
+
+```
+
 Astuce : Si vous travaillez sur une nouvelle fonctionnalité, créez une branche :
 
-bash
+```bash
 
 git checkout -b feature-nom-de-la-feature
 
+```
 
 🔹 2.2 Installer les dépendances
 Dans le dossier du projet, exécutez :
 
-bash
+```bash
 
 pnpm install
+
+```
+
 🚀 Pourquoi pnpm ?
 
 Plus rapide et optimise l’espace disque
 Évite la duplication des dépendances
+
 🔹 2.3 Configuration des variables d’environnement
 Certains services nécessitent un fichier .env.
 
 1️⃣ Copiez le fichier .env.example :
 
-bash
+```bash
 
 cp .env.example .env
+
+```
+
 2️⃣ Éditez le fichier .env avec les informations nécessaires :
 
 env
 
+```typescript
 NEXT_PUBLIC_API_URL=http://localhost:3001
 DATABASE_URL=postgresql://user:password@localhost:5432/database
 JWT_SECRET=super-secret-key
+```
+
 🚨 Attention : Ne partagez jamais ce fichier sur Git ! Il doit être ajouté au .gitignore.
 
 🔹 2.4 Configuration de PostgreSQL (si utilisé)
+
 Sous Windows
+
 Installez PostgreSQL via le site officiel
 Lancez pgAdmin et créez une nouvelle base de données : database
 Configurez l’utilisateur PostgreSQL et le mot de passe
+
 Sous Linux (Ubuntu)
+
 1️⃣ Installation de PostgreSQL
 
-bash
+```bash
 
 sudo apt update
 sudo apt install postgresql postgresql-contrib
+```
+
 2️⃣ Créer un utilisateur PostgreSQL
 
-bash
+```bash
 
 sudo -u postgres createuser --interactive
+```
+
 3️⃣ Créer une base de données
 
-bash
+```bash
 
 sudo -u postgres createdb database
+```
+
 4️⃣ Accéder à PostgreSQL et configurer l’utilisateur
 
-bash
+```bash
 
 sudo -u postgres psql
 ALTER USER votre_utilisateur WITH PASSWORD 'votre_mot_de_passe';
+```
+
 🚀 3. Démarrer le projet en local
+
 🔹 3.1 Démarrer le Backend
+
 📌 Si le backend utilise NestJS, lancez :
 
-bash
+```bash
 
 cd backend
 pnpm start:dev
+```
+
 Le backend sera accessible à http://localhost:3001.
 
 📌 Si Docker est utilisé, démarrez le backend avec :
 
-bash
+```bash
 
 docker-compose up -d
+```
+
 🔹 3.2 Démarrer le Frontend
 Pour lancer l’application Next.js :
 
-bash
+```bash
 
 cd frontend
 pnpm dev
+```
+
 L’application sera accessible à http://localhost:3000.
 
 📌 4. Commandes utiles
-Action Commande
-Lancer le frontend pnpm dev
+
+Action Commande:
+
+Lancer le frontend: pnpm dev
+
 Lancer le backend pnpm start:dev
+
 Lancer les services Docker docker-compose up -d
+
 Arrêter Docker docker-compose down
+
 Mettre à jour le projet git pull origin main
+
 Créer une nouvelle branche git checkout -b feature-nom
+
 🚀 5. Workflow Git et bonnes pratiques
 🔹 5.1 Travailler sur une nouvelle fonctionnalité
+
 Mettez à jour votre projet :
-bash
 
+```bash
 git pull origin main
-Créez une nouvelle branche :
-bash
+```
 
+Créez une nouvelle branche :
+
+```bash
 git checkout -b feature-nom-de-la-feature
+```
+
 Après modifications, committez et poussez :
-bash
+
+```bash
 
 git add .
 git commit -m "Ajout de la feature X"
 git push origin feature-nom-de-la-feature
+```
+
 Créez une Pull Request (PR) sur GitHub.
+
 🎯 6. Déploiement et CI/CD
 🔹 6.1 Déploiement automatique
+
 Si le projet est déployé via Vercel, Netlify, ou Railway, il peut être mis à jour avec :
 
-bash
+```bash
 
 git push origin main
+```
+
 Si une pipeline CI/CD est en place, le projet sera déployé automatiquement.
 
 📖 7. Ressources utiles
@@ -204,4 +259,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+```
+
 ```
