@@ -1,0 +1,15 @@
+# Ignorer les dépendances node_modules locales
+node_modules
+
+# Ignorer les fichiers de configuration locaux
+.env
+
+# Ignorer les fichiers temporaires de développement
+.DS_Store
+.vscode
+.idea
+*.swp
+*.swo
+
+# Ignorer le dossier des builds temporaires
+/.next
