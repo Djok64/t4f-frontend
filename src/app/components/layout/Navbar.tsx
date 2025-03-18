@@ -1,5 +1,5 @@
 'use client'
-
+import { ROUTES } from '../../../constants/routes'
 import Button from '../ui/Button'
 import Link from 'next/link'
 import { FaDiscord, FaTelegram } from 'react-icons/fa' // Import des icônes
@@ -33,16 +33,19 @@ const Navbar = () => {
           <Link href="/" className="text-white hover:text-gray-400">
             Accueil
           </Link>
-          <Link href="/Games" className="text-white hover:text-gray-400">
+          <Link href={ROUTES.GAMES} className="text-white hover:text-gray-400">
             Games
           </Link>
-          <Link href="/Shop" className="text-white hover:text-gray-400">
+          <Link href={ROUTES.SHOP} className="text-white hover:text-gray-400">
             Shop
           </Link>
-          <Link href="/News" className="text-white hover:text-gray-400">
+          <Link href={ROUTES.NEWS} className="text-white hover:text-gray-400">
             News
           </Link>
-          <Link href="/Community" className="text-white hover:text-gray-400">
+          <Link
+            href={ROUTES.COMMUNITY}
+            className="text-white hover:text-gray-400"
+          >
             Community
           </Link>
         </div>
