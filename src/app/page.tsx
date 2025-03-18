@@ -1,5 +1,3 @@
-// src/app/page.tsx
-
 'use client'
 
 import Layout from './components/layout/Layout' // Importation du Layout
