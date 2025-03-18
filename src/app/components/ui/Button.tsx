@@ -1,24 +1,16 @@
-// Indiquer que ce composant doit être rendu côté client
-'use client'
-
 import React from 'react'
 
-// Déclaration des propriétés du composant, avec un enfant et un gestionnaire d'événement onClick optionnel
 interface ButtonProps {
-  children: React.ReactNode
-  onClick?: () => void
+  onClick: () => void // Fonction exécutée au clic
+  children: React.ReactNode // Texte du bouton
+  className?: string // Permet de passer un style personnalisé
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ onClick, children, className }) => {
   return (
-    // Le bouton qui reçoit le gestionnaire d'événement `onClick`
-    <button
-      onClick={onClick}
-      className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
-    >
+    <button onClick={onClick} className={className}>
       {children}
     </button>
   )
 }
-
 export default Button

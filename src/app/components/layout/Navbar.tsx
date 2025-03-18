@@ -1,8 +1,17 @@
 'use client'
 
+import Button from '../ui/Button'
 import Link from 'next/link'
+import { FaDiscord, FaTelegram } from 'react-icons/fa' // Import des icônes
 
 const Navbar = () => {
+  const handleLogin = () => {
+    alert('Login fonctionnality coming soon')
+  }
+
+  const handleConnectWallet = () => {
+    alert('Connect Wallet fonctionnality coming soon')
+  }
   return (
     <nav className="bg-black-800 p-4 border-b border-gray-300">
       {' '}
@@ -40,28 +49,37 @@ const Navbar = () => {
 
         {/* Partie droite (Réseaux sociaux et Wallet/Account) */}
         <div className="flex items-center space-x-4">
-          <button className="px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full shadow-md hover:from-purple-700 hover:to-indigo-700 transition-all duration-300">
+          <Button
+            onClick={handleLogin}
+            className="px-4 py-3 font-semibold rounded-full shadow-md transition-all duration-300 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700"
+          >
             Loggin
-          </button>
-          <button className="px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full shadow-md hover:from-purple-700 hover:to-indigo-700 transition-all duration-300">
+          </Button>
+          <Button
+            onClick={handleConnectWallet}
+            className="px-4 py-3 font-semibold rounded-full shadow-md transition-all duration-300 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700"
+          >
             Connect Wallet
-          </button>
+          </Button>
+          {/* Icônes des réseaux sociaux */}
           <a
-            href="https://facebook.com"
+            href="https://discord.gg/KrgVbVYM"
             target="_blank"
-            className="text-white hover:text-gray-400"
+            rel="noopener noreferrer"
+            className="text-white hover:text-gray-400 text-2xl"
           >
-            <i className="fab fa-facebook"></i>
+            <FaDiscord />
           </a>
           <a
-            href="https://twitter.com"
+            href="https://t.me/tokenT4F"
             target="_blank"
-            className="text-white hover:text-gray-400"
+            rel="noopener noreferrer"
+            className="text-white hover:text-gray-400 text-2xl"
           >
-            <i className="fab fa-twitter"></i>
+            <FaTelegram />
           </a>
           <a
-            href="https://twitter.com"
+            href="https://x.com/tokent4f"
             target="_blank"
             className="text-white hover:text-gray-400"
           >

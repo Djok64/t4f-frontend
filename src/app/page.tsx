@@ -23,7 +23,12 @@ export default function Home() {
       />
 
       {/* Utilisation du bouton */}
-      <Button onClick={handleClick}>Cliquez-moi</Button>
+      <Button
+        onClick={handleClick}
+        className=" px-4 py-3 font-semibold rounded-full shadow-md transition-all duration-300 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700"
+      >
+        Cliquez-moi
+      </Button>
     </Layout>
   )
 }
