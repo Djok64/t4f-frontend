@@ -40,14 +40,25 @@ const Navbar = () => {
 
         {/* Partie droite (Réseaux sociaux et Wallet/Account) */}
         <div className="flex items-center space-x-4">
-          <button className="text-white hover:text-gray-400">Wallet</button>
-          <button className="text-white hover:text-gray-400">Account</button>
+          <button className="px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full shadow-md hover:from-purple-700 hover:to-indigo-700 transition-all duration-300">
+            Loggin
+          </button>
+          <button className="px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full shadow-md hover:from-purple-700 hover:to-indigo-700 transition-all duration-300">
+            Connect Wallet
+          </button>
           <a
             href="https://facebook.com"
             target="_blank"
             className="text-white hover:text-gray-400"
           >
             <i className="fab fa-facebook"></i>
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            className="text-white hover:text-gray-400"
+          >
+            <i className="fab fa-twitter"></i>
           </a>
           <a
             href="https://twitter.com"
