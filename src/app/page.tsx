@@ -1,33 +1,17 @@
 'use client'
 
 import Image from 'next/image'
-import Button from './components/ui/Button'
+import FloatingMoon from './components/ui/FloatingMoon'
+import HeroSection from './components/sections/HeroSection'
 
 export default function Home() {
-  const handleClick = () => {
-    alert('Le bouton a été cliqué!')
-  }
-
   return (
-    <>
-      <h1>Bienvenue sur ma page d'accueil</h1>
-
-      {/* Affichage de l'image */}
-      <Image
-        src="/next.svg"
-        alt="Logo Next"
-        width={500}
-        height={300}
-        className="bg-gray-200"
-      />
-
-      {/* Utilisation du bouton */}
-      <Button
-        onClick={handleClick}
-        className="px-4 py-3 font-semibold rounded-full shadow-md transition-all duration-300 bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700"
-      >
-        Cliquez-moi
-      </Button>
-    </>
+    <div className="flex flex-col items-center min-h-screen pt-10 px-4">
+      <FloatingMoon />
+      {/* Conteneur des deux blocs (Texte & Image) */}
+      <div className="w-full max-w-5xl flex flex-col">
+        <HeroSection />
+      </div>
+    </div>
   )
 }
