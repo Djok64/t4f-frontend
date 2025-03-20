@@ -31,7 +31,7 @@ const Navbar = () => {
         {/* Menu principal visible sur grand écran */}
         <div className="hidden md:flex space-x-6">
           <Link href="/" className="text-white hover:text-gray-400">
-            Accueil
+            Home
           </Link>
           <Link href={ROUTES.GAMES} className="text-white hover:text-gray-400">
             Games
@@ -41,6 +41,9 @@ const Navbar = () => {
           </Link>
           <Link href={ROUTES.NEWS} className="text-white hover:text-gray-400">
             News
+          </Link>
+          <Link href={ROUTES.TOKEN} className="text-white hover:text-gray-400">
+            Token
           </Link>
           <Link
             href={ROUTES.COMMUNITY}

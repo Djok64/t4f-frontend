@@ -4,4 +4,5 @@ export const ROUTES = {
   GAMES: '/games',
   NEWS: '/news',
   SHOP: '/shop',
+  TOKEN: '/token',
 }
