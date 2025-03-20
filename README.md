@@ -2,7 +2,7 @@
 
 ## Description
 
-T4F-Frontend est le frontend du projet Trèfles Jeux, une plateforme Web3 intégrant la blockchain Solana. Ce projet est développé avec **Next.js 15**, **React 19**, **TypeScript**, **TailwindCSS**, et utilise **Axios** pour les appels API.
+T4F-Frontend est le frontend du projet World Of Clovers,de la T4F Company, une plateforme Web3 intégrant la blockchain Solana. Ce projet est développé avec **Next.js 15**, **React 19**, **TypeScript**, **TailwindCSS**, et utilise **Axios** pour les appels API.
 
 ## Prérequis
 
