@@ -1,14 +1,17 @@
 'use client' // Indique que ce composant est interactif côté client
 import Button from '../ui/Button'
+import { useRouter } from 'next/navigation'
 
 export default function HeroSection() {
+  const router = useRouter()
   const handleJoinCommunity = () => {
     alert('JoinCommunity fonctionnality coming soon')
   }
 
   const handleDiscoverToken = () => {
-    alert('Discover token fonctionnality coming soon')
+    router.push('/token')
   }
+
   return (
     <section className="flex items-center justify-between gap-20 p-10 lg:p-20 lg:gap-32 max-w-7xl mx-auto">
       {/* Bloc Texte */}
