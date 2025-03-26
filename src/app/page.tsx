@@ -5,6 +5,7 @@ import FloatingMoon from './components/ui/FloatingMoon'
 import HeroSection from './components/sections/HeroSection'
 import Carousel from './components/sections/Caroussel'
 import PartnersSection from './components/sections/PartnersSection'
+import CommunitySection from './components/sections/CommunitySection'
 
 export default function Home() {
   return (
@@ -20,6 +21,9 @@ export default function Home() {
       </div>
       <div className="w-full max-w-7xl flex justify-center mb-10">
         <PartnersSection />
+      </div>
+      <div className="w-full max-w-7xl flex justify-center mb-10">
+        <CommunitySection />
       </div>
     </div>
   )

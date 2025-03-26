@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 
 const partners = [
   { name: 'ChatGPT', logo: '/GptLogo.png', link: 'https://chatgpt.com/' },
@@ -22,6 +23,7 @@ const partners = [
     logo: '/Solflare.png',
     link: 'https://www.solflare.com/',
   },
+  { name: 'ChatGPT', logo: '/GptLogo.png', link: 'https://chatgpt.com/' },
 ]
 
 export default function PartnersSection() {
@@ -29,7 +31,7 @@ export default function PartnersSection() {
     <section className="py-16 bg-black">
       {/* Titre de la section */}
       <h2 className="text-3xl font-bold text-center text-yellow-500 mb-10">
-        Nos Partenaires
+        Our Partners
       </h2>
 
       {/* Grid contenant les partenaires */}
@@ -43,10 +45,12 @@ export default function PartnersSection() {
             aria-label={`Lien vers ${partner.name}`}
             className="min-w-[120px] w-48 h-48 bg-white flex items-center justify-center rounded-lg shadow-md transition-transform transform hover:scale-110 hover:shadow-2xl ease-in-out duration-300"
           >
-            <img
+            <Image
               src={partner.logo}
               alt={partner.name}
-              className="w-full h-full max-w-28 max-h-28 object-contain"
+              width={112}
+              height={112}
+              className="w-full h-full object-contain"
             />
           </a>
         ))}
