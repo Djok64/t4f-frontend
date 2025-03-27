@@ -26,7 +26,7 @@ const partners = [
   { name: 'ChatGPT', logo: '/GptLogo.png', link: 'https://chatgpt.com/' },
 ]
 
-export default function PartnersSection() {
+const PartnersSection = () => {
   return (
     <section className="py-16 bg-black">
       {/* Titre de la section */}
@@ -58,3 +58,5 @@ export default function PartnersSection() {
     </section>
   )
 }
+
+export default PartnersSection

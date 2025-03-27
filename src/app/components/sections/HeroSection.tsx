@@ -2,7 +2,7 @@
 import Button from '../ui/Button'
 import { useRouter } from 'next/navigation'
 
-export default function HeroSection() {
+const HeroSection = () => {
   const router = useRouter()
   const handleJoinCommunity = () => {
     alert('JoinCommunity fonctionnality coming soon')
@@ -52,3 +52,5 @@ export default function HeroSection() {
     </section>
   )
 }
+
+export default HeroSection

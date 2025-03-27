@@ -7,7 +7,7 @@ import Carousel from './components/sections/Caroussel'
 import PartnersSection from './components/sections/PartnersSection'
 import CommunitySection from './components/sections/CommunitySection'
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen pt-10 px-4">
       <FloatingMoon />
@@ -28,3 +28,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-export default function CommunitySection() {
+const CommunitySection = () => {
   return (
     <section className="py-16 bg-black text-white text-center">
       {/* Animation d'apparition */}
@@ -72,3 +72,5 @@ export default function CommunitySection() {
     </section>
   )
 }
+
+export default CommunitySection

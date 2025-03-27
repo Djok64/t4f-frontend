@@ -14,7 +14,7 @@ const slidesData = [
   { image: '/AIRDROP.png', alt: 'Airdrop', link: '/shop' },
 ]
 
-export default function Carousel() {
+const Carousel = () => {
   return (
     <div className="max-w-full mx-auto mt-6 relative px-2">
       <Swiper
@@ -53,3 +53,5 @@ export default function Carousel() {
     </div>
   )
 }
+
+export default Carousel
