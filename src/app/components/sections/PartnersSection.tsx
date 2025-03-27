@@ -34,8 +34,8 @@ export default function PartnersSection() {
         Our Partners
       </h2>
 
-      {/* Grid contenant les partenaires */}
-      <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10">
+      {/* Conteneur flex pour meilleure responsivité */}
+      <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10">
         {partners.map((partner, index) => (
           <a
             key={index}
@@ -43,14 +43,14 @@ export default function PartnersSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Lien vers ${partner.name}`}
-            className="min-w-[120px] w-48 h-48 bg-white flex items-center justify-center rounded-lg shadow-md transition-transform transform hover:scale-110 hover:shadow-2xl ease-in-out duration-300"
+            className="w-24 h-24 sm:w-32 sm:h-32 bg-white flex items-center justify-center rounded-lg shadow-md transition-transform transform hover:scale-110 hover:shadow-2xl ease-in-out duration-300"
           >
             <Image
               src={partner.logo}
               alt={partner.name}
               width={112}
               height={112}
-              className="w-full h-full object-contain"
+              className="w-20 h-20 sm:w-24 sm:h-24 object-contain"
             />
           </a>
         ))}

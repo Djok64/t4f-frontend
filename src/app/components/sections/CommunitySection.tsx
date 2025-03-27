@@ -24,7 +24,7 @@ export default function CommunitySection() {
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
           className="max-w-lg sm:max-w-2xl mx-auto bg-gray-900 p-6 rounded-lg shadow-md mb-6"
         >
-          <p className="text-lg ">
+          <p className="text-lg">
             Community is at the heart of our platform. Our voting system allows
             players to directly choose the next games that will be integrated
             into CLOVERSGAMES. How it works:
@@ -50,13 +50,24 @@ export default function CommunitySection() {
         >
           Join Us
         </motion.a>
-        <Image
-          src="/communityBanner.png"
-          alt="Bannière de la communauté"
-          width={1200} // Ajuste selon ton besoin
-          height={300} // Ajuste selon ton besoin
-          className="rounded-lg shadow-lg"
-        />
+
+        {/* Bannière cliquable avec animation */}
+        <motion.a
+          href="/community"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95, rotate: -2 }} // Effet spécial au clic (légère rotation)
+          className="inline-block"
+        >
+          <Image
+            src="/communityBanner.png"
+            alt="Bannière de la communauté"
+            width={1200}
+            height={300}
+            placeholder="blur"
+            blurDataURL="/communityBanner.png"
+            className="rounded-lg shadow-lg transition-transform duration-300"
+          />
+        </motion.a>
       </motion.div>
     </section>
   )
