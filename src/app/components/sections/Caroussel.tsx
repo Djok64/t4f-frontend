@@ -37,7 +37,7 @@ const Carousel = () => {
             <img
               src={slide.image}
               alt={slide.alt}
-              className="w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover rounded-lg"
+              className="w-full h-40 sm:h-48 md:h-56 lg:h-64 object-fit:cover rounded-lg"
             />
             <a
               href={slide.link}
